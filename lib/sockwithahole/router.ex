@@ -41,5 +41,3 @@ defmodule Sockwithahole.Router do
     html(conn, page)
   end
 end
-
-

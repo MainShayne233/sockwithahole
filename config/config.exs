@@ -1,4 +1,3 @@
 use Mix.Config
 
-config :maru, Sockwithahole,
-  http: [port: System.get_env("PORT") || 4000]
+import_config "#{Mix.env}.exs"
