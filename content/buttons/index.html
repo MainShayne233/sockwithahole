@@ -1,0 +1,25 @@
+<title>holy cascading</title>
+
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+  }
+</style>
+
+<div>
+  <button></button>
+</div>
+
+<script>
+  let button = document.getElementsByTagName('button')[0]
+  let newButton;
+  for (i = 0; i < 50; i++) {
+    newButton = document.createElement('BUTTON');
+    button.appendChild(newButton);
+    button = newButton;
+  }
+  button.innerHTML = 'weeeeeeeeeee';
+</script>
