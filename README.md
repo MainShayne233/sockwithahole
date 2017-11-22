@@ -1,5 +1,5 @@
 # sockwithahole
 
-A barebones web server for serving up http://sockwithahole.website
+A barebones web server for serving up [sockwithahole.website](http://sockwithahole.website)
 
-Built with [Maru](http://sockwithahole.website)
+Built with [Maru](https://github.com/elixir-maru/maru)
