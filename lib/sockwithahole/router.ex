@@ -1,13 +1,15 @@
 defmodule Sockwithahole.Router do
   use Maru.Router
 
-  @content_dir "./content"
+  @assets_dir "./assets"
 
-  @root_html_file @content_dir <> "/index.html"
+  @content_dir @assets_dir <> "/content"
 
-  @favicon File.read!(@content_dir <> "/favicon.png")
+  @root_html_file @assets_dir <> "/index.html"
 
-  @error_page File.read!(@content_dir <> "/error.html")
+  @favicon File.read!(@assets_dir <> "/favicon.png")
+
+  @error_page File.read!(@assets_dir <> "/error.html")
 
 
   route_param :thing do
