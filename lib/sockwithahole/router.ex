@@ -5,7 +5,7 @@ defmodule Sockwithahole.Router do
 
   @content_dir @assets_dir <> "/content"
 
-  @root_html_file @assets_dir <> "/index.html"
+  @root_html_file @content_dir <> "/index.html"
 
   @favicon File.read!(@assets_dir <> "/favicon.png")
 
@@ -13,6 +13,13 @@ defmodule Sockwithahole.Router do
 
 
   route_param :thing do
+
+    get :preview do
+      params
+      |> Map.get(:thing)
+      |> handle_request_for_thing_preview(conn)
+    end
+
     get do
       params
       |> Map.get(:thing)
@@ -30,8 +37,20 @@ defmodule Sockwithahole.Router do
   end
 
   defp handle_request_for_thing(thing, conn) do
+    [@content_dir, thing, "index.html"]
+    |> Path.join
+    |> render_page(conn)
+  end
+
+  defp handle_request_for_thing_preview(thing, conn) do
+    [@content_dir, thing, "preview.html"]
+    |> Path.join
+    |> render_page(conn)
+  end
+
+  defp render_page(path, conn) do
     page =
-      @content_dir <> "/" <> thing <> "/index.html"
+      path
       |> File.read
       |> case do
         {:ok, page} ->
@@ -39,7 +58,6 @@ defmodule Sockwithahole.Router do
         _other ->
           @error_page
       end
-
     html(conn, page)
   end
 end
